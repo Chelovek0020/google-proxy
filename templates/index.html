@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поиск Google</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Виртуальный браузер</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        iframe { width: 100%; height: 90vh; border: none; }
+        input { width: 80%; padding: 10px; margin-top: 10px; }
+        button { padding: 10px; }
+    </style>
 </head>
 <body>
-    <h1>Поиск Google</h1>
-    <form action="/search" method="get">
-        <input type="text" name="q" placeholder="Введите запрос..." required>
-        <button type="submit">Поиск</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <h1>Виртуальный браузер</h1>
+    <input type="text" id="urlInput" placeholder="Введите URL и нажмите Enter">
+    <button onclick="loadSite()">Открыть</button>
+    <iframe id="browserFrame"></iframe>
+
+    <script>
+        function loadSite() {
+            let url = document.getElementById('urlInput').value;
+            if (!url.startsWith('http')) {
+                url = 'https://' + url;
+            }
+            document.getElementById('browserFrame').src = url;
+        }
+        document.getElementById('urlInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                loadSite();
+            }
+        });
+    </script>
 </body>
 </html>
