@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск Google</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Поиск Google</h1>
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Введите запрос..." required>
+        <button type="submit">Поиск</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

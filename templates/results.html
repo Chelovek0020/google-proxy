@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Результаты для "{{ query }}"</h1>
+    <a href="/">🔍 Новый поиск</a>
+    <ul>
+        {% for result in results %}
+            <li><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
